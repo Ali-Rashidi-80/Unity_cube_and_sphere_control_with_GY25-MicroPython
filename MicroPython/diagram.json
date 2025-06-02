@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "author": "Ali Rashidi",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "board-pi-pico-w",
+      "id": "pico",
+      "top": -60.85,
+      "left": -63.65,
+      "attrs": { "cyw43": "1" }
+    },
+    { "type": "wokwi-servo", "id": "servo1", "top": -155.6, "left": 124.8, "attrs": {} },
+    { "type": "wokwi-servo", "id": "servo2", "top": -30.8, "left": 124.8, "attrs": {} },
+    { "type": "wokwi-mpu6050", "id": "imu1", "top": 176.62, "left": -64.88, "attrs": {} },
+    { "type": "wokwi-servo", "id": "servo3", "top": 94, "left": 124.8, "attrs": {} },
+    { "type": "wokwi-vcc", "id": "vcc1", "top": 211.96, "left": 115.2, "attrs": {} },
+    { "type": "wokwi-gnd", "id": "gnd1", "top": 211.2, "left": 66.6, "attrs": {} }
+  ],
+  "connections": [
+    [ "servo1:GND", "servo2:GND", "black", [ "h-9.6", "v124.8" ] ],
+    [ "servo2:GND", "servo3:GND", "black", [ "h-9.6", "v124.8" ] ],
+    [ "servo2:V+", "servo1:V+", "red", [ "h-19.2", "v-124.7" ] ],
+    [ "servo2:V+", "servo3:V+", "red", [ "h-19.2", "v124.9" ] ],
+    [ "servo1:PWM", "pico:GP28", "orange", [ "h-28.8", "v96.2" ] ],
+    [ "servo2:PWM", "pico:GP27", "purple", [ "h-28.8", "v-19" ] ],
+    [ "servo3:PWM", "pico:GP26", "violet", [ "h-28.8", "v-115", "h-9.6", "v-9.6" ] ],
+    [ "vcc1:VCC", "servo3:V+", "red", [ "v9.6", "h-19.2", "v-96" ] ],
+    [ "gnd1:GND", "servo3:GND", "black", [ "v-76.8" ] ],
+    [ "imu1:VCC", "servo3:V+", "red", [ "v-28.8", "h115.28" ] ],
+    [ "imu1:GND", "servo3:GND", "black", [ "v0" ] ],
+    [ "servo2:GND", "pico:GND.8", "black", [ "h-9.6", "v-48" ] ],
+    [ "servo1:V+", "pico:VSYS", "red", [ "h-19.2", "v57.7" ] ],
+    [ "imu1:SCL", "pico:GP2", "cyan", [ "v-38.4", "h-95.92", "v-182.4" ] ],
+    [ "imu1:SDA", "pico:GP3", "yellow", [ "v-28.8", "h-95.92", "v-153.6" ] ]
+  ],
+  "serialMonitor": { "display": "terminal" },
+  "dependencies": {}
+}
